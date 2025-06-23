@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Seleccionar método de pago - Capricho</title>
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+  <body>
+  <h1>Selecciona tu método de pago</h1>
+
+  <div class="metodos">
+    <button onclick="seleccionarMetodo('tarjeta')">Tarjeta de Crédito/Débito</button>
+    <button onclick="seleccionarMetodo('paypal')">PayPal</button>
+    <button onclick="seleccionarMetodo('transferencia')">Transferencia Bancaria</button>
+    <button onclick="seleccionarMetodo('efectivo')">Pago en efectivo (en tienda)</button>
+  </div>
+
+  <script>
+    function seleccionarMetodo(metodo) {
+      alert('Has seleccionado: ' + metodo);
+      // Aquí puedes redirigir a la página correspondiente según método:
+      // window.location.href = metodo + '.html';
+    }
+  </script>
+</body>
+</html>

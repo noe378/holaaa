@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <title>Carrito - Capricho</title>
+  <link rel="stylesheet" href="carrito.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Quicksand&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/emailjs-com@3/dist/email.min.js"></script>
+  <script>
+    (function(){
+      emailjs.init("iPZUiGuJyGO8ygc5-"); // 🔁 Reemplaza con tu verdadero User ID
+    })();
+  </script>
+</head>
+<body>
+  <header class="header-aesthetic">
+    <h1 class="titulo-aesthetic">🛍️ Tu Carrito</h1>
+  </header>
+
+  <main class="carrito-contenedor">
+    <div id="productos-carrito" class="productos-lista">
+      <!-- Productos se inyectan aquí -->
+    </div>
+
+    <div class="total">
+      <h3>Total: $<span id="total">0.00</span> MXN</h3>
+    </div>
+
+    <div class="botones-carrito">
+      <a class="boton-volver" href="Productos.html">← Volver a comprar</a>
+      <button class="boton-pagar" onclick="enviarPedido()">Pagar 💳</button>
+    </div>
+  </main>
+
+  <footer class="footer-aesthetic">
+    <p>📍 Plaza Juárez, Amealco — © 2025 Capricho</p>
+  </footer>
+
+  <script>
+    let carrito = JSON.parse(localStorage.getItem("carrito")) || [];
+    const contenedor = document.getElementById("productos-carrito");
+    const totalSpan = document.getElementById("total");
+
+    function mostrarCarrito() {
+      contenedor.innerHTML = '';
+      let total = 0;
+
+      if (carrito.length === 0) {
+        contenedor.innerHTML = '<p class="vacío">Tu carrito está vacío.</p>';
+        totalSpan.textContent = '0.00';
+        return;
+      }
+
+      carrito.forEach((producto, index) => {
+        const div = document.createElement("div");
+        div.className = "producto-carrito";
+        div.innerHTML = `
+          <img src="${producto.imagen}" alt="${producto.nombre}" class="img-carrito">
+          <div>
+            <h3>${producto.nombre}</h3>
+            <p>Precio: $${producto.precio.toFixed(2)} MXN</p>
+            <button class="btn-eliminar" onclick="eliminarProducto(${index})">Eliminar</button>
+          </div>
+        `;
+        contenedor.appendChild(div);
+        total += producto.precio;
+      });
+
+      totalSpan.textContent = total.toFixed(2);
+    }
+
+    function eliminarProducto(index) {
+      carrito.splice(index, 1);
+      localStorage.setItem("carrito", JSON.stringify(carrito));
+      mostrarCarrito();
+    }
+
+    function enviarPedido() {
+      if (carrito.length === 0) {
+        alert("Tu carrito está vacío, no hay nada que pagar.");
+        return;
+      }
+
+      let productosTexto = carrito.map(p => `${p.nombre} - $${p.precio}`).join("\n");
+      let total = carrito.reduce((acc, p) => acc + p.precio, 0).toFixed(2);
+
+      const templateParams = {
+        to_name: "Capricho",
+        message: `Nuevo pedido:\n\n${productosTexto}\n\nTotal: $${total} MXN`,
+        reply_to: "uriben378@gmail.com"
+      };
+
+      emailjs.send('service_gtzc1jr', 'template_cazd92d', templateParams)
+        .then(function(response) {
+           alert('✅ Pedido enviado correctamente.');
+           localStorage.removeItem('carrito');
+           window.location.href = "inicio.html";
+        }, function(error) {
+           alert('❌ Error al enviar pedido: ' + JSON.stringify(error));
+        });
+    }
+
+    window.onload = mostrarCarrito;
+  </script>
+</body>
+</html>
+

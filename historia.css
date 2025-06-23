@@ -1,0 +1,81 @@
+.historia-contenido {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 40px 20px;
+  background-color: #fff0f5;
+  gap: 30px;
+}
+header {
+  background-color: #fce4ec; /* fondo rosa muy claro */
+  padding: 30px 20px;
+  text-align: center;
+  border-bottom: 2px solid #f8bbd0;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.05);
+}
+
+header h1 {
+  font-family: 'Pacifico', cursive;
+  font-size: 48px;
+  color: #ce93d8; /* lavanda aesthetic */
+  text-shadow: 1px 1px 2px #ffffffaa;
+  letter-spacing: 2px;
+  margin: 0;
+}
+
+.historia-img img {
+  width: 300px;
+  max-width: 100%;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+}
+
+.historia-texto {
+  max-width: 600px;
+  color: #880e4f;
+  font-family: 'Quicksand', sans-serif;
+  line-height: 1.7;
+  font-size: 17px;
+  background-color: #ffeaf3;
+  padding: 20px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(240, 100, 150, 0.1);
+}
+
+.historia-texto h2 {
+  color: #d81b60;
+  margin-bottom: 15px;
+  font-size: 26px;
+  font-weight: bold;
+  text-align: left;
+}
+
+.boton-inicio {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  background-color: #f06292;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 25px;
+  transition: background-color 0.3s ease;
+}
+
+.boton-inicio:hover {
+  background-color: #d81b60;
+}
+
+footer {
+  background-color: #f8bbd0; /* rosa pastel aesthetic */
+  color: #6a1b4d;            /* morado profundo */
+  text-align: center;
+  padding: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 15px;
+  border-top: 2px solid #f06292;
+  box-shadow: 0 -3px 10px rgba(0, 0, 0, 0.05);
+  margin-top: 40px;
+  border-radius: 15px 15px 0 0;
+}

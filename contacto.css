@@ -1,0 +1,108 @@
+/* ENCABEZADO AESTHETIC */
+.header-aesthetic {
+  background-color: #fce4ec;
+  padding: 25px 0;
+  text-align: center;
+  border-bottom: 2px solid #f8bbd0;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.05);
+}
+
+.titulo-aesthetic {
+  font-family: 'Pacifico', cursive;
+  font-size: 45px;
+  color: #ba68c8;
+  letter-spacing: 2px;
+  text-shadow: 1px 1px 4px #fff;
+  margin: 0;
+}
+
+/* CONTENIDO DE CONTACTO */
+.contacto-contenedor {
+  background-color: #fff0f5;
+  padding: 40px 20px;
+  max-width: 700px;
+  margin: 0 auto;
+  border-radius: 16px;
+  box-shadow: 0 0 20px rgba(255, 192, 203, 0.2);
+  font-family: 'Quicksand', sans-serif;
+}
+
+.contacto-info {
+  color: #6a1b4d;
+}
+
+.contacto-titulo {
+  font-size: 20px;
+  color: #d81b60;
+  margin-top: 25px;
+  font-weight: bold;
+}
+
+.contacto-sub {
+  font-size: 16px;
+  line-height: 1.7;
+  margin-bottom: 10px;
+}
+
+.horario {
+  list-style: none;
+  padding-left: 0;
+  line-height: 1.7;
+  font-size: 15px;
+  margin-bottom: 20px;
+}
+
+a {
+  color: #c2185b;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+/* BOTÓN INICIO */
+.boton-inicio {
+  display: inline-block;
+  margin-top: 25px;
+  padding: 10px 22px;
+  background-color: #f06292;
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  font-size: 15px;
+  border-radius: 25px;
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.boton-inicio:hover {
+  background-color: #ec407a;
+  transform: scale(1.05);
+}
+
+.centrado {
+  text-align: center;
+}
+
+/* PIE DE PÁGINA ESTÉTICO */
+.footer-aesthetic {
+  background-color: #f8bbd0;
+  color: #6a1b4d;
+  text-align: center;
+  padding: 20px;
+  font-family: 'Quicksand', sans-serif;
+  font-size: 14px;
+  border-top: 2px solid #f48fb1;
+  border-radius: 20px 20px 0 0;
+  margin-top: 40px;
+  box-shadow: 0 -2px 8px rgba(0,0,0,0.05);
+}
+a[href*="facebook.com"] {
+  color: #3b5998;
+  font-weight: 600;
+}
+
+a[href*="facebook.com"]:hover {
+  text-decoration: underline;
+  color: #2d4373;
+}
