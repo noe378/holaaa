@@ -16,11 +16,11 @@ if (!$conn) {
 $id = intval($_POST['id']);
 $name = $_POST['name'];
 $address = $_POST['address'];
-$cuote = $_POST['quote'];
+$cuote = $_POST['quotes'];
 
 // Insertar datos (asumiendo que la tabla tiene columna id sin serial/autoincrement)
 $query = 'INSERT INTO opinio (id, name, address, quotes) VALUES ($1, $2, $3, $4)';
-$result = pg_query_params($conn, $query, array($id, $name, $address, $quote));
+$result = pg_query_params($conn, $query, array($id, $name, $address, $quotes));
 
 if ($result) {
     echo "Opinión guardada con éxito.";
