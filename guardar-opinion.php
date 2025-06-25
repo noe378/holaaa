@@ -1,31 +1,27 @@
 <?php
-// Datos de conexión a PostgreSQL
-$host = "localhost";
-$dbname = "tu_base_de_datos";   // ← cambia por el nombre de tu base
-$user = "postgres";
-$password = "tu_contraseña";
-
-// Recibir datos del formulario
 $nombre = $_POST['nombre'];
-$correo = $_POST['correo'];
-$opinion = $_POST['opinion'];  // Cambiado a opinion
+$mensaje = $_POST['mensaje'];
 
-try {
-    // Conexión a PostgreSQL
-    $conn = new PDO("pgsql:host=$host;dbname=$dbname", $user, $password);
-    $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+$host = "dpg-d151jqbuibrs73bfvi40-a.oregon-postgres.render.com";
+$dbname = "noe";
+$user = "noe_user";
+$password = "qxb1V22veQN5IqDvnz81XrA4KrtVecyi";
+$port = "5432";
 
-    // Insertar opinión
-    $sql = "INSERT INTO opiniones (nombre, correo, opinion) VALUES (:nombre, :correo, :opinion)";
-    $stmt = $conn->prepare($sql);
-    $stmt->execute([
-        ':nombre' => $nombre,
-        ':correo' => $correo,
-        ':opinion' => $opinion
-    ]);
+$conn = pg_connect("host=$host dbname=$dbname user=$user password=$password port=$port");
 
-    echo "✅ ¡Gracias por tu opinión!";
-} catch (PDOException $e) {
-    echo "❌ Error: " . $e->getMessage();
+if (!$conn) {
+    die("Error al conectar con la base de datos.");
 }
+
+$query = "INSERT INTO opiniones (nombre, mensaje) VALUES ($1, $2)";
+$result = pg_query_params($conn, $query, array($nombre, $mensaje));
+
+if ($result) {
+    echo "¡Gracias por tu opinión!";
+} else {
+    echo "Hubo un error.";
+}
+
+pg_close($conn);
 ?>
