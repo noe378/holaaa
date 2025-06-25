@@ -1,62 +1,23 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-  <meta charset="UTF-8">
-  <title>Opiniones de Clientes</title>
-  <style>
-    body {
-      font-family: Arial, sans-serif;
-      margin: 40px;
-      background-color: #ffe6f0;
-    }
-    h2 {
-      color: #c71585;
-    }
-    form {
-      background: white;
-      padding: 20px;
-      border-radius: 10px;
-      max-width: 400px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.2);
-    }
-    input, textarea {
-      width: 100%;
-      padding: 8px;
-      margin-top: 8px;
-      border: 1px solid #ccc;
-      border-radius: 5px;
-    }
-    input[type="submit"] {
-      background-color: #c71585;
-      color: white;
-      font-weight: bold;
-      border: none;
-      cursor: pointer;
-    }
-  </style>
+  <meta charset="UTF-8" />
+  <title>Opinión</title>
 </head>
 <body>
+  <h1>Déjanos tu opinión</h1>
 
-  <h2>Déjanos tu opinión</h2>
-  <form action="guardar-opinion.php" method="POST">
-    <label>Nombre:</label>
-    <input type="text" name="nombre" required>
+  <form action="guardar_opinion.php" method="post">
+    <label for="name">Nombre:</label><br />
+    <input type="text" id="name" name="name" required /><br />
 
-    <label>Correo electrónico:</label>
-    <input type="email" name="correo" required>
+    <label for="email">Correo:</label><br />
+    <input type="email" id="email" name="email" required /><br />
 
-    <label>Tu opinión:</label>
-    <textarea name="opinion" rows="4" required></textarea>
+    <label for="quotes">Opinión:</label><br />
+    <textarea id="quotes" name="quotes" required></textarea><br />
 
-    <br><br>
-    <input type="submit" value="Enviar opinión">
+    <input type="submit" value="Enviar Opinión" />
   </form>
-  <form action="guardar-opinion.php" method="POST">
-  <input type="text" name="nombre" placeholder="Tu nombre" required>
-  <textarea name="mensaje" placeholder="Tu opinión" required></textarea>
-  <button type="submit">Enviar</button>
-</form>
-
-
 </body>
 </html>
