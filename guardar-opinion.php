@@ -1,26 +1,31 @@
 <?php
-$nombre = $_POST['nombre'];
-$mensaje = $_POST['mensaje'];
-
+// Datos conexión PostgreSQL
 $host = "dpg-d151jqbuibrs73bfvi40-a.oregon-postgres.render.com";
+$port = "5432";
 $dbname = "noe";
 $user = "noe_user";
 $password = "qxb1V22veQN5IqDvnz81XrA4KrtVecyi";
-$port = "5432";
 
-$conn = pg_connect("host=$host dbname=$dbname user=$user password=$password port=$port");
-
+// Conectar a la base de datos
+$conn = pg_connect("host=$host port=$port dbname=$dbname user=$user password=$password");
 if (!$conn) {
-    die("Error al conectar con la base de datos.");
+    die("Error en la conexión a la base de datos.");
 }
 
-$query = "INSERT INTO opiniones (nombre, mensaje) VALUES ($1, $2)";
-$result = pg_query_params($conn, $query, array($nombre, $mensaje));
+// Recibir datos del formulario
+$id = intval($_POST['id']);
+$name = $_POST['name'];
+$address = $_POST['address'];
+$cuote = $_POST['quote'];
+
+// Insertar datos (asumiendo que la tabla tiene columna id sin serial/autoincrement)
+$query = 'INSERT INTO opinio (id, name, address, quotes) VALUES ($1, $2, $3, $4)';
+$result = pg_query_params($conn, $query, array($id, $name, $address, $quote));
 
 if ($result) {
-    echo "¡Gracias por tu opinión!";
+    echo "Opinión guardada con éxito.";
 } else {
-    echo "Hubo un error.";
+    echo "Error al guardar la opinión.";
 }
 
 pg_close($conn);
